@@ -67,6 +67,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f801c11f3a2be3143b36fa01e9eccaf7, type: 2}
+  - {fileID: 2100000, guid: 99f66f76b6058484ebfb00303527c581, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,7 +136,19 @@ MonoBehaviour:
       m_Calls: []
   onActivated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2196078856653438376}
+        m_TargetAssemblyTypeName: PaintIn3D.P3dPaintableTexture, PaintIn3D
+        m_MethodName: SetColor
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: '#FFFF'
+          m_BoolArgument: 0
+        m_CallState: 2
   activated: 0
 --- !u!114 &2052871354955911762
 MonoBehaviour:
@@ -149,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9986da839a92d2d42975bac1e96cd24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
+  index: 1
   activated: 0
   current: {fileID: 0}
   original: {fileID: 0}
@@ -166,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot:
-    Index: 0
+    Index: 1
     Name: _MainTex
   coord: 0
   group:
@@ -177,8 +190,8 @@ MonoBehaviour:
   saveName: 
   width: 512
   height: 512
-  texture: {fileID: 2800000, guid: c910dcd9746d9c44e8c75ff844bb7ee5, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}
+  texture: {fileID: 2800000, guid: f1513d484f8cfdf47be17e133b1fba6e, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 0}
   format: 0
   mipMaps: 0
   filter: -1
@@ -214,7 +227,7 @@ MonoBehaviour:
   async: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 2196078856653438376}
-  cooldown: -166.16939
+  cooldown: -210.54868
   currentReader:
     dirty: 1
     requested: 0
