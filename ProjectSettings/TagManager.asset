@@ -11,13 +11,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - CleaningFinish
+  - RunnerFinish
+  - Enemy
+  - Gate
+  - Player
+  - Money
+  - Column
   - 
   - 
   - 

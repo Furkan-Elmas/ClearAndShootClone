@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HyperlabCase.Interfaces;
 
-public class CleaningState : MonoBehaviour, IState
+namespace HyperlabCase.StateMachine
 {
-    public void Enter()
+    public class CleaningState : MonoBehaviour, IState
     {
+        public void Enter()
+        {
 
-    }
+        }
 
-    public void Exit()
-    {
+        public void Exit()
+        {
 
-    }
+        }
 
-    public void Tick()
-    {
+        public void Tick()
+        {
 
-    }
+        }
+    } 
 }

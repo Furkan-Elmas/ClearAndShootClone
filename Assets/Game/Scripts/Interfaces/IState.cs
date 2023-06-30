@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IState
+namespace HyperlabCase.Interfaces
 {
-    public void Enter();
-    public void Tick();
-    public void Exit();
+    public interface IState
+    {
+        public void Enter();
+        public void Tick();
+        public void Exit();
+    } 
 }

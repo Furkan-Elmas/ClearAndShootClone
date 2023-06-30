@@ -1,46 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HyperlabCase.Interfaces;
 
-public class BaseSM : MonoBehaviour
+namespace HyperlabCase.StateMachine
 {
-    private IState currentState;
-    private IState previousState;
-
-    private bool inTransition;
-
-
-    private void Update()
+    public class BaseSM : MonoBehaviour
     {
-        if (currentState != null && !inTransition)
-            currentState.Tick();
-    }
+        private IState currentState;
+        private IState previousState;
 
-    public void ChangeState(IState newState)
-    {
-        if (currentState == newState || inTransition)
-            return;
+        private bool inTransition;
 
-        StartCoroutine(ChangeStateCoroutine(newState));
-    }
 
-    private IEnumerator ChangeStateCoroutine(IState newState)
-    {
-        inTransition = true;
+        private void Update()
+        {
+            if (currentState != null && !inTransition)
+                currentState.Tick();
+        }
 
-        if (currentState != null)
-            currentState.Exit();
+        public void ChangeState(IState newState)
+        {
+            if (currentState == newState || inTransition)
+                return;
 
-        if (previousState != null)
-            previousState = currentState;
+            StartCoroutine(ChangeStateCoroutine(newState));
+        }
 
-        currentState = newState;
+        private IEnumerator ChangeStateCoroutine(IState newState)
+        {
+            inTransition = true;
 
-        yield return null;
+            if (currentState != null)
+                currentState.Exit();
 
-        if (currentState != null)
-            currentState.Enter();
+            if (previousState != null)
+                previousState = currentState;
 
-        inTransition = false;
-    }
+            currentState = newState;
+
+            yield return null;
+
+            if (currentState != null)
+                currentState.Enter();
+
+            inTransition = false;
+        }
+    } 
 }

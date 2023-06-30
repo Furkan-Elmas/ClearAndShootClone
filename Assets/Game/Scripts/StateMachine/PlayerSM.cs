@@ -1,31 +1,35 @@
+using HyperlabCase.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSM : BaseSM
+namespace HyperlabCase.StateMachine
 {
-    private AttackState attackState;
-    private CleaningState cleaningState;
-
-
-    private void Awake()
+    public class PlayerSM : BaseSM
     {
-        attackState = new AttackState();
-        cleaningState = new CleaningState();
-    }
+        private RunnerState runnerState;
+        private CleaningState cleaningState;
 
-    private void OnEnable()
-    {
-        EventManager.OnPlayerTapToStart += BeginCleaning;
-    }
 
-    private void OnDisable()
-    {
-        EventManager.OnPlayerTapToStart -= BeginCleaning;
-    }
+        private void Awake()
+        {
+            runnerState = new RunnerState();
+            cleaningState = new CleaningState();
+        }
 
-    private void BeginCleaning()
-    {
-        ChangeState(cleaningState);
+        private void OnEnable()
+        {
+            EventManager.OnPlayerTapToStart += BeginCleaning;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.OnPlayerTapToStart -= BeginCleaning;
+        }
+
+        private void BeginCleaning()
+        {
+            ChangeState(cleaningState);
+        }
     }
 }
