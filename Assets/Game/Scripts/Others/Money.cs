@@ -23,7 +23,7 @@ namespace HyperlabCase
         {
             if ((layer.value & (1 << other.gameObject.layer)) > 0)
             {
-                float newValue = moneyValue * (1 + (Database.Instance.DataSO.PlayerData.IncomeLevel - 1) * 0.1f);
+                float newValue = moneyValue * (1 + (Database.Instance.DataSO.IncomeLevel - 1) * 0.1f);
                 Database.Instance.DataSO.Currency += newValue;
                 EventManager.OnMoneyChanged?.Invoke();
                 gameObject.SetActive(false);

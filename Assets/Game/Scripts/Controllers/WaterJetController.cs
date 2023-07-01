@@ -58,7 +58,7 @@ namespace HyperlabCase.Controllers
         private void RefreshWaterJetSize()
         {
             Vector3 originalScale = waterJetTransform.localScale;
-            Vector3 scaleChange = new Vector3(baseWaterJetWidth * (1f + (Database.Instance.DataSO.PlayerData.ClearLevel - 1) * 0.1f), 1f, 1f);
+            Vector3 scaleChange = new Vector3(baseWaterJetWidth * (1f + (Database.Instance.DataSO.ClearLevel - 1) * 0.1f), 1f, 1f);
             if (scaleChange.x >= 7f)
                 scaleChange.x = 7f;
 
@@ -69,12 +69,12 @@ namespace HyperlabCase.Controllers
             );
 
             Vector3 centerToPivot = waterJetTransform.position;
-            centerToPivot.x = baseWaterJetPosition * (1f + (Database.Instance.DataSO.PlayerData.ClearLevel - 1) * 0.1f);
+            centerToPivot.x = baseWaterJetPosition * (1f + (Database.Instance.DataSO.ClearLevel - 1) * 0.1f);
 
             waterJetTransform.localScale = newScale;
             waterJetTransform.position = centerToPivot;
 
-            paintSphere.Scale = new Vector3(basePaintWidth * (1 + (Database.Instance.DataSO.PlayerData.ClearLevel - 1) * 0.1f), 1f, 0.2f);
+            paintSphere.Scale = new Vector3(basePaintWidth * (1 + (Database.Instance.DataSO.ClearLevel - 1) * 0.1f), 1f, 0.2f);
         }
     }
 }

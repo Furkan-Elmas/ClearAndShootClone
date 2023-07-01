@@ -11,7 +11,7 @@ namespace HyperlabCase.Collectables
 
         protected override IEnumerator BeCollected()
         {
-            float newValue = moneyValue * (1 + (Database.Instance.DataSO.PlayerData.IncomeLevel - 1) * 0.1f);
+            float newValue = moneyValue * (1 + (Database.Instance.DataSO.IncomeLevel - 1) * 0.1f);
             Database.Instance.DataSO.Currency += newValue;
             EventManager.OnMoneyChanged?.Invoke();
             return base.BeCollected();

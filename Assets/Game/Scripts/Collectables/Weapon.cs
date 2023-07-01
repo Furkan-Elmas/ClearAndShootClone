@@ -63,8 +63,8 @@ namespace HyperlabCase.Collectables
 
         private void Start()
         {
-            currentDamage = weaponData.Damage * (1f + (Database.Instance.DataSO.PlayerData.DamageLevel - 1) * 0.1f);
-            currentFireRate = weaponData.FireRate * (1f - (Database.Instance.DataSO.PlayerData.FireRateLevel - 1) * 0.01f);
+            currentDamage = weaponData.Damage * (1f + (Database.Instance.DataSO.DamageLevel - 1) * 0.1f);
+            currentFireRate = weaponData.FireRate * (1f - (Database.Instance.DataSO.FireRateLevel - 1) * 0.01f);
             fireRateWaitingTime = new WaitForSeconds(currentFireRate);
 
             RefreshWeaponPlate();
@@ -169,7 +169,7 @@ namespace HyperlabCase.Collectables
 
         private void RefreshWeaponPlate()
         {
-            if (Database.Instance.DataSO.PlayerData.ClearLevel < weaponData.Level)
+            if (Database.Instance.DataSO.ClearLevel < weaponData.Level)
             {
                 canBeCleaned = false;
                 Color newColor = P3dPaintableTexture.Color;
