@@ -33,22 +33,10 @@ public class EndGameColumnData
 public class StartGamePanelObjects
 {
     public GameObject StartGamePanel;
-    public Button ClearLevelButton;
-    public Button IncomeButton;
-    public TMP_Text ClearLevelLevelText;
-    public TMP_Text ClearLevelCostText;
-    public TMP_Text IncomeLevelText;
-    public TMP_Text IncomeCostText;
 }
 
 [Serializable]
 public class EndGamePanelObjects
 {
     public GameObject EndGamePanel;
-    public Button DamageButton;
-    public Button FireRateButton;
-    public TMP_Text DamageLevelText;
-    public TMP_Text DamageCostText;
-    public TMP_Text FireRateText;
-    public TMP_Text FireRateCostText;
 }
