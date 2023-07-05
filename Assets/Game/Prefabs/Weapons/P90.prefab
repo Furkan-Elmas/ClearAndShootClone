@@ -871,7 +871,7 @@ GameObject:
   - component: {fileID: 1898957165733475918}
   - component: {fileID: 6020493637826168746}
   - component: {fileID: 3190290183375902669}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: P90
   m_TagString: Untagged
   m_Icon: {fileID: 0}

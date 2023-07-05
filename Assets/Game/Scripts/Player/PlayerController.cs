@@ -85,6 +85,16 @@ namespace HyperlabCase.Controllers
             HandleMovement();
         }
 
+        public void JumpBackward()
+        {
+            if (jumpingBackward)
+                return;
+
+            if (backwardJumpCor != null)
+                StopCoroutine(backwardJumpCor);
+            backwardJumpCor = StartCoroutine(JumpBackCoroutine());
+        }
+
         private void OnPlayerTapToMove()
         {
             canMove = true;
@@ -175,17 +185,12 @@ namespace HyperlabCase.Controllers
 
         private void CheckEnemyHit(GameObject _object)
         {
-            if ((enemyLayer.value & (1 << _object.layer)) > 0)
-            {
-                if (jumpingBackward)
-                    return;
+            //if ((enemyLayer.value & (1 << _object.layer)) > 0)
+            //{
+            //    JumpBackward();
 
-                if (backwardJumpCor != null)
-                    StopCoroutine(backwardJumpCor);
-                backwardJumpCor = StartCoroutine(JumpBackCoroutine());
-
-                _object.GetComponent<IDamageable>().TakeDamage(1000f);
-            }
+            //    _object.GetComponent<IDamageable>().TakeDamage(1000f);
+            //}
         }
 
         private IEnumerator JumpBackCoroutine()

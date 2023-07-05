@@ -1,3 +1,4 @@
+using HyperlabCase.Controllers;
 using HyperlabCase.Interfaces;
 using HyperlabCase.Managers;
 using MoreMountains.Feedbacks;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace HyperlabCase
 {
@@ -14,6 +16,7 @@ namespace HyperlabCase
         [SerializeField] private EnemyData enemyData;
         [SerializeField] private float moneyValue = 33f;
 
+        private LayerMask playerLayer;
         private TMP_Text healthText;
         private SkinnedMeshRenderer m_Renderer;
         private MMFeedbacks feedback;
@@ -28,6 +31,16 @@ namespace HyperlabCase
             feedback = GetComponent<MMFeedbacks>();
             currentHealth = enemyData.Health;
             healthText.text = currentHealth.ToString();
+            playerLayer = LayerMask.GetMask("Player");
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if ((playerLayer.value & (1 << other.gameObject.layer)) > 0)
+            {
+                other.transform.root.GetComponentInChildren<PlayerController>().JumpBackward();
+                TakeDamage(currentHealth);
+            }
         }
 
         public void TakeDamage(float damage)

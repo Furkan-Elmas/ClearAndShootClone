@@ -11391,6 +11391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef247ac342702744ba0ca9a6c1d742a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintPercentage: 0.98
   cleanedFeedback: {fileID: 5087959799776174953}
   collectedFeedback: {fileID: 2390217148494605605}
   projectileType: 0

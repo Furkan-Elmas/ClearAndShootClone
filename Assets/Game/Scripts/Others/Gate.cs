@@ -6,6 +6,8 @@ using TMPro;
 using MoreMountains.Feedbacks;
 using LiquidVolumeFX;
 using HyperlabCase.Managers;
+using UnityEngine.Diagnostics;
+using HyperlabCase.Controllers;
 
 namespace HyperlabCase
 {
@@ -15,6 +17,8 @@ namespace HyperlabCase
         [SerializeField] private TMP_Text incrementalValueText;
         [SerializeField] private TMP_Text incrementalTypeText;
         [SerializeField] private List<Gate> sideGates;
+        [SerializeField] private List<Rigidbody> lockedChainRigidbodies;
+        [SerializeField] private Rigidbody lockRigidbody;
 
         private LayerMask layer;
         private MMFeedbacks feedback;
@@ -33,8 +37,16 @@ namespace HyperlabCase
         {
             if ((layer.value & (1 << other.gameObject.layer)) > 0)
             {
-                GiveIncremental();
-                SetGatesNonactive();
+                if (!gateData.IsLocked)
+                {
+                    GiveIncremental();
+                    SetGatesNonactive();
+                }
+                else
+                {
+                    other.GetComponent<PlayerController>().JumpBackward();
+                    BreakLock();
+                }
             }
         }
 
@@ -56,10 +68,17 @@ namespace HyperlabCase
         public void TakeDamage(float damage)
         {
             feedback.PlayFeedbacks();
+
+            if (gateData.IsLocked)
+            {
+                HitChains();
+                return;
+            }
+
             currentIncreaseValue += damage * 0.01f;
             incrementalValueText.text = currentIncreaseValue.ToString("F1");
 
-            if (System.Math.Round(currentIncreaseValue,2) >= 0)
+            if (System.Math.Round(currentIncreaseValue, 2) >= 0)
             {
                 liquidVolume.liquidColor2 = Color.green;
                 incrementalValueText.text = incrementalValueText.text.Insert(0, "+");
@@ -70,6 +89,25 @@ namespace HyperlabCase
             }
             else
                 liquidVolume.liquidColor2 = Color.red;
+        }
+
+        private void HitChains()
+        {
+            gateData.LockBreakHit--;
+            if (gateData.LockBreakHit <= 0)
+                BreakLock();
+        }
+
+        private void BreakLock()
+        {
+            foreach (var chain in lockedChainRigidbodies)
+            {
+                chain.isKinematic = false;
+                lockRigidbody.isKinematic = false;
+                lockRigidbody.AddForce(Vector3.up, ForceMode.Impulse);
+            }
+
+            gateData.IsLocked = false;
         }
 
         private void SetGatesNonactive()

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Data
   m_EditorClassIdentifier: 
   GameLevel: 3
-  Currency: 0
-  DamageLevel: 1
-  FireRateLevel: 1
-  ClearLevel: 6
-  IncomeLevel: 1
+  Currency: 528.6006
+  DamageLevel: 11
+  FireRateLevel: 11
+  ClearLevel: 36
+  IncomeLevel: 9
   MaxDamageLevel: 50
   MaxFireRateLevel: 50
   MaxClearLevel: 50

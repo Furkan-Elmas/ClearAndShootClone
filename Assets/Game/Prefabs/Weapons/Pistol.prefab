@@ -30034,6 +30034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef247ac342702744ba0ca9a6c1d742a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paintPercentage: 0.98
   cleanedFeedback: {fileID: 4941491292983331538}
   collectedFeedback: {fileID: 5432605245943597468}
   projectileType: 2
@@ -30041,6 +30042,7 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: eb51a4491ac23784e8f0d3a119015225, type: 2}
   firePoint: {fileID: 2439983596681913409}
   muzzle: {fileID: 5267004324114342852}
+  weaponLevelPlate: {fileID: 0}
 --- !u!1 &7070672576778849417
 GameObject:
   m_ObjectHideFlags: 0
