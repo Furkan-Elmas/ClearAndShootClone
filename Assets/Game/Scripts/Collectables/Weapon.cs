@@ -169,6 +169,9 @@ namespace HyperlabCase.Collectables
 
         private void RefreshWeaponPlate()
         {
+            if (isCollected)
+                return;
+
             if (Database.Instance.DataSO.ClearLevel < weaponData.Level)
             {
                 canBeCleaned = false;

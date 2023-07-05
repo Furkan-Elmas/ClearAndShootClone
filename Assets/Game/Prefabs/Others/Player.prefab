@@ -78,6 +78,63 @@ MonoBehaviour:
   swerveSpeed: 10
   distanceMultiplier: 0.0005
   spareWeapon: {fileID: 6844503478556568808}
+  jumpAnimationCurveZ:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  jumpAnimationCurveY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 4
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.25
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: -4
+      outSlope: -3.1910684
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.046798605
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &3309419070806979018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,9 +289,9 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 828735287391470951}
-  - {fileID: 7375210265398631416}
   - {fileID: 7284663699031397088}
   - {fileID: 9009810709664628436}
+  - {fileID: 7375210265398631416}
   m_Father: {fileID: 367285249090013100}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16118,7 +16175,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5518
+  m_VersionIndex: 5581
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -21202,7 +21259,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5321
+  m_VersionIndex: 5384
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -21600,7 +21657,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5358
+  m_VersionIndex: 5421
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

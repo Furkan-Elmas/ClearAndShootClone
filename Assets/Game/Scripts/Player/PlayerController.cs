@@ -7,6 +7,8 @@ using MoreMountains.Feedbacks;
 using Unity.VisualScripting;
 using System.Collections;
 using Lean.Transition;
+using HyperlabCase.Interfaces;
+using MoreMountains.FeedbacksForThirdParty;
 
 namespace HyperlabCase.Controllers
 {
@@ -19,19 +21,24 @@ namespace HyperlabCase.Controllers
         [SerializeField] private float swerveSpeed = 5f;
         [SerializeField] private float distanceMultiplier = 0.0005f;
         [SerializeField] private Weapon spareWeapon;
+        [SerializeField] private AnimationCurve jumpAnimationCurveZ;
+        [SerializeField] private AnimationCurve jumpAnimationCurveY;
 
         private List<Weapon> earnedWeapons = new List<Weapon>();
         private WaterJetController waterJetController;
+        private Coroutine backwardJumpCor;
         private Vector2 lastMousePosition;
         private Vector3 targetPosition;
         private LayerMask cleaningFinishLayer;
         private LayerMask runnerFinishLayer;
         private LayerMask columnLayer;
+        private LayerMask enemyLayer;
         private float maxBoundary;
         private float minBoundary;
         private bool cleaningFinished;
         private bool runningFinished;
         private bool canMove;
+        private bool jumpingBackward;
 
 
         private void Awake()
@@ -40,6 +47,7 @@ namespace HyperlabCase.Controllers
             cleaningFinishLayer = LayerMask.GetMask("CleaningFinish");
             runnerFinishLayer = LayerMask.GetMask("RunnerFinish");
             columnLayer = LayerMask.GetMask("Column");
+            enemyLayer = LayerMask.GetMask("Enemy");
         }
 
         private void OnEnable()
@@ -69,6 +77,7 @@ namespace HyperlabCase.Controllers
         {
             CheckLinePassage(other.gameObject);
             CheckColumnHit(other.gameObject);
+            CheckEnemyHit(other.gameObject);
         }
 
         private void Update()
@@ -164,6 +173,47 @@ namespace HyperlabCase.Controllers
             }
         }
 
+        private void CheckEnemyHit(GameObject _object)
+        {
+            if ((enemyLayer.value & (1 << _object.layer)) > 0)
+            {
+                if (jumpingBackward)
+                    return;
+
+                if (backwardJumpCor != null)
+                    StopCoroutine(backwardJumpCor);
+                backwardJumpCor = StartCoroutine(JumpBackCoroutine());
+
+                _object.GetComponent<IDamageable>().TakeDamage(1000f);
+            }
+        }
+
+        private IEnumerator JumpBackCoroutine()
+        {
+            jumpingBackward = true;
+            canMove = false;
+
+            float timer = 0.5f;
+            float height = 0.3f;
+            float backwardDistance = -0.3f;
+
+            Vector3 initialPos = transform.localPosition;
+            Vector3 destinationPos = transform.localPosition;
+
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+
+                destinationPos.Set(initialPos.x, initialPos.y + jumpAnimationCurveY.Evaluate(0.5f - timer) * height, initialPos.z + jumpAnimationCurveZ.Evaluate(0.5f - timer) * backwardDistance);
+                transform.localPosition = destinationPos;
+
+                yield return null;
+            }
+
+            jumpingBackward = false;
+            canMove = true;
+        }
+
         private void SetWeaponPositions()
         {
             foreach (var position in weaponPositions)
@@ -183,9 +233,9 @@ namespace HyperlabCase.Controllers
                     return;
             }
 
+            spareWeapon.MakeCollected();
             spareWeapon.gameObject.SetActive(true);
             AddWeaponToMovement(spareWeapon);
-            spareWeapon.MakeCollected();
             spareWeapon.BeginToAttack();
         }
     }
