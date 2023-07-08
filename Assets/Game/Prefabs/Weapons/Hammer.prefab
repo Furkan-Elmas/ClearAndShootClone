@@ -256,7 +256,7 @@ Transform:
   m_GameObject: {fileID: 1711589437188482385}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 13.579981, y: 13.64822, z: -1.2589574}
-  m_LocalScale: {x: 0.35, y: 0.5, z: 0.35}
+  m_LocalScale: {x: 0.2, y: 0.5, z: 0.35}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7975910135298114675}
@@ -264,7 +264,7 @@ Transform:
   - {fileID: 7295892638360531439}
   - {fileID: 3293313248547168194}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!33 &5787623139867550970
 MeshFilter:
@@ -481,7 +481,7 @@ MonoBehaviour:
   async: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 2580528990830221483}
-  cooldown: -670.97565
+  cooldown: -676.44354
   currentReader:
     dirty: 0
     requested: 0

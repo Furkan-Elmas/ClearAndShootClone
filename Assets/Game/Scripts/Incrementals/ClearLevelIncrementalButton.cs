@@ -8,6 +8,7 @@ namespace HyperlabCase
     public class ClearLevelIncrementalButton : IncrementalButton
     {
         protected override int IncrementalLevel { get => Database.Instance.DataSO.ClearLevel; set => Database.Instance.DataSO.ClearLevel = value; }
+        protected override int MaxIncrementalLevel => Database.Instance.DataSO.MaxClearLevel;
         protected override float IncrementalCost => Database.Instance.DataSO.ClearLevelCost();
         protected override BaseIncrementalType IncrementalType => BaseIncrementalType.ClearLevel;
     }

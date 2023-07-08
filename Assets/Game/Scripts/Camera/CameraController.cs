@@ -12,6 +12,7 @@ namespace HyperlabCase.Controllers
         [SerializeField] private Vector3 cleaningFollowOffset = new Vector3(0, 0.6f, -0.3f);
         [SerializeField] private Vector3 runningFollowOffset = new Vector3(0, 0.3f, -0.6f);
         [SerializeField] private Vector3 columnAttackFollowOffset = new Vector3(-0.02f, 0.33f, -0.9f);
+        [SerializeField] private float baseCameraFOV = 55f;
 
         private CinemachineVirtualCamera cinemachineCamera;
         private CinemachineTransposer transposer;
@@ -28,6 +29,7 @@ namespace HyperlabCase.Controllers
             EventManager.OnPlayerTapToStart += SetCameraForCleaningState;
             EventManager.OnCleaningFinish += SetCameraForRunningState;
             EventManager.OnRunnerFinish += SetCameraForColumnAttack;
+            EventManager.OnLevelUpIncremental += SetCameraFOV;
         }
 
         private void OnDisable()
@@ -35,11 +37,13 @@ namespace HyperlabCase.Controllers
             EventManager.OnPlayerTapToStart -= SetCameraForCleaningState;
             EventManager.OnCleaningFinish -= SetCameraForRunningState;
             EventManager.OnRunnerFinish -= SetCameraForColumnAttack;
+            EventManager.OnLevelUpIncremental -= SetCameraFOV;
         }
 
         private void Start()
         {
             transposer.m_FollowOffset = startFollowOffset;
+            SetCameraFOV();
         }
 
         private void SetCameraForCleaningState()
@@ -55,6 +59,11 @@ namespace HyperlabCase.Controllers
         private void SetCameraForColumnAttack()
         {
             StartCoroutine(FollowOffsetChangingCoroutine(columnAttackFollowOffset, 0.5f));
+        }
+
+        private void SetCameraFOV(BaseIncrementalType type = default)
+        {
+            cinemachineCamera.m_Lens.FieldOfView = baseCameraFOV + Database.Instance.DataSO.ClearLevel * 0.5f;
         }
 
         private IEnumerator FollowOffsetChangingCoroutine(Vector3 targetVector, float speed)

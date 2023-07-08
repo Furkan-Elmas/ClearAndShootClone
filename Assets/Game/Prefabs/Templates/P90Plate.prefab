@@ -670,7 +670,7 @@ PrefabInstance:
     - target: {fileID: 6020493637826168746, guid: 68f6c7225e7fcaf42b922fc0257e694e,
         type: 3}
       propertyPath: cooldown
-      value: -792.74646
+      value: -797.5785
       objectReference: {fileID: 0}
     - target: {fileID: 7062581489306959850, guid: 68f6c7225e7fcaf42b922fc0257e694e,
         type: 3}
@@ -685,7 +685,7 @@ PrefabInstance:
     - target: {fileID: 7062581489306959850, guid: 68f6c7225e7fcaf42b922fc0257e694e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.6
+      value: 13.5946
       objectReference: {fileID: 0}
     - target: {fileID: 7062581489306959850, guid: 68f6c7225e7fcaf42b922fc0257e694e,
         type: 3}

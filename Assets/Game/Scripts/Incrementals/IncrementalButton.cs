@@ -16,24 +16,24 @@ namespace HyperlabCase
         [SerializeField] protected Button button;
 
         protected abstract int IncrementalLevel { get; set; }
+        protected abstract int MaxIncrementalLevel { get; }
         protected abstract float IncrementalCost { get; }
         protected abstract BaseIncrementalType IncrementalType { get; }
 
         protected virtual void Start()
         {
             RefreshButton();
-            CheckInteractable();
             button.onClick.AddListener(OnClickButton);
         }
 
         protected virtual void OnEnable()
         {
-            EventManager.OnMoneyChanged += CheckInteractable;
+            EventManager.OnMoneyChanged += RefreshButton;
         }
 
         protected virtual void OnDisable()
         {
-            EventManager.OnMoneyChanged -= CheckInteractable;
+            EventManager.OnMoneyChanged -= RefreshButton;
         }
 
         public virtual void OnClickButton()
@@ -44,22 +44,18 @@ namespace HyperlabCase
             Database.Instance.DataSO.Currency -= IncrementalCost;
             IncrementalLevel++;
             EventManager.OnLevelUpIncremental?.Invoke(IncrementalType);
-            RefreshButton();
             EventManager.OnMoneyChanged?.Invoke();
+            RefreshButton();
             Database.Instance.SaveData();
-        }
-
-        protected virtual void CheckInteractable()
-        {
-            button.interactable = IncrementalCost <= Database.Instance.DataSO.Currency;
         }
 
         protected virtual void RefreshButton()
         {
-            bool isReachedMax = Database.Instance.DataSO.IncomeLevel >= Database.Instance.DataSO.MaxIncomeLevel;
+            bool isReachedMax = IncrementalLevel >= MaxIncrementalLevel;
             levelText.text = isReachedMax ? "MAX" : "Level " + IncrementalLevel.ToString("F0");
             costText.text = isReachedMax ? "COMING SOON" : IncrementalCost.ToString("F0");
-            button.interactable = !isReachedMax;
+            button.interactable = !isReachedMax && IncrementalCost <= Database.Instance.DataSO.Currency;
+            print(button.interactable);
         }
     }
 }

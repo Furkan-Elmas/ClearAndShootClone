@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a044cf7dbd3934f8d2e480a7d74b06, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  GameLevel: 3
-  Currency: 528.6006
-  DamageLevel: 11
-  FireRateLevel: 11
-  ClearLevel: 36
-  IncomeLevel: 9
+  GameLevel: 1
+  Currency: 49750
+  DamageLevel: 1
+  FireRateLevel: 1
+  ClearLevel: 50
+  IncomeLevel: 50
   MaxDamageLevel: 50
   MaxFireRateLevel: 50
   MaxClearLevel: 50

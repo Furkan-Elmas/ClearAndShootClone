@@ -659,11 +659,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1264260286439247352, guid: db08c15473ca5a94cb02c9e5412899af,
         type: 3}
-      propertyPath: paintPercentage
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1264260286439247352, guid: db08c15473ca5a94cb02c9e5412899af,
-        type: 3}
       propertyPath: weaponLevelPlate
       value: 
       objectReference: {fileID: 1915473859169125731}
@@ -730,7 +725,7 @@ PrefabInstance:
     - target: {fileID: 7695675425976001275, guid: db08c15473ca5a94cb02c9e5412899af,
         type: 3}
       propertyPath: cooldown
-      value: -668.106
+      value: -676.77686
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

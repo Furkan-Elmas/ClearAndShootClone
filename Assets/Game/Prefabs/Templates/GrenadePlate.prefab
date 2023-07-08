@@ -717,6 +717,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 7218357756403136292, guid: 7a5a464edd27bcd4aa530966779acbca,
+        type: 3}
+      propertyPath: cooldown
+      value: -1019.07056
+      objectReference: {fileID: 0}
     - target: {fileID: 8876863525536013938, guid: 7a5a464edd27bcd4aa530966779acbca,
         type: 3}
       propertyPath: weaponLevelPlate

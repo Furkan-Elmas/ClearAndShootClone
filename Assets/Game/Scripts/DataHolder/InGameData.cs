@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using TMPro;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class EnemyData
 [Serializable]
 public class GateData
 {
+    public bool IsLocked;
+    [ShowIf("IsLocked")] public int LockBreakHit;
     public float IncreaseValue;
     public GateIncrementalType IncrementalType;
 }

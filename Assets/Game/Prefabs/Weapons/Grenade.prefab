@@ -705,7 +705,7 @@ Transform:
   - {fileID: 5205216867269988155}
   - {fileID: 2724780999465942471}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 90}
 --- !u!33 &2941770658435075103
 MeshFilter:
@@ -922,7 +922,7 @@ MonoBehaviour:
   async: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 8300307776742253463}
-  cooldown: -994.6495
+  cooldown: -1018.73724
   currentReader:
     dirty: 1
     requested: 0
@@ -964,7 +964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef247ac342702744ba0ca9a6c1d742a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paintPercentage: 0.7
+  paintPercentage: 0.98
   cleanedFeedback: {fileID: 7852864906834169999}
   collectedFeedback: {fileID: 602381431915466700}
   projectileType: 4

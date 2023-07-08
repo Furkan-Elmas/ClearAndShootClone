@@ -74,7 +74,7 @@ namespace HyperlabCase.Controllers
             waterJetTransform.localScale = newScale;
             waterJetTransform.position = centerToPivot;
 
-            paintSphere.Scale = new Vector3(basePaintWidth * (1 + (Database.Instance.DataSO.ClearLevel - 1) * 0.1f), 1f, 0.2f);
+            paintSphere.Scale = new Vector3(basePaintWidth * (1 + (Database.Instance.DataSO.ClearLevel - 1) * 0.1f), 5f, 0.3f);
         }
     }
 }
